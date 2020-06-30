@@ -1,14 +1,13 @@
 # Import Libraries
 
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn import ensamble
+from sklearn import ensemble
 from sklearn.metrics import mean_absolute_error
-
+from sklearn.model_selection import train_test_split
 
 df = pd.read_csv('data/Melbourne_housing_FULL.csv')
 # Scrub Data
-del df['Adress']
+del df['Address']
 del df['Method']
 del df['SellerG']
 del df['Date']
@@ -20,11 +19,11 @@ del df['Propertycount']
 
 df.dropna(axis=0, how='any', thresh=None, subset=None, inplace=True)
 df = pd.get_dummies(df, columns = ['Suburb', 'CouncilArea', 'Type'])
-x = df.drop('Price',axis=1)
+X = df.drop('Price',axis=1)
 y = df['Price']
 
 # Split Data
-X_train, X_test, y_train, y_test = test_train_split(X, y, test_size=0.3, shuffle=True)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, shuffle=True)
 
 # Algorithm and hyperparameters
 model = ensemble.GradientBoostingRegressor(
@@ -38,3 +37,10 @@ model = ensemble.GradientBoostingRegressor(
 )
 
 model.fit(X_train, y_train)
+mae_train = mean_absolute_error(y_train, model.predict(X_train)) 
+print ("Training Set Mean Absolute Error: %.2f" % mae_train)
+
+mae_test = mean_absolute_error(y_test, model.predict(X_test))
+print ("Test Set Mean Absolute Error: %.2f" % mae_test)
+
+ 
