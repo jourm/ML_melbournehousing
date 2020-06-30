@@ -27,9 +27,9 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, shuffle
 
 # Algorithm and hyperparameters
 model = ensemble.GradientBoostingRegressor(
-    n_estimators = 150,
+    n_estimators = 250,
     learning_rate = 0.1,
-    max_depth = 30,
+    max_depth = 15,
     min_samples_split = 4,
     min_samples_leaf = 6,
     max_features = 0.6,
