@@ -13,7 +13,7 @@ jupyter-core==4.6.3
 mkl-fft==1.1.0
 mkl-random==1.1.1
 mkl-service==2.3.0
-numpy==1.18.5
+numpy==1.22.0
 pandas @ file:///C:/ci/pandas_1592833613419/work
 parso==0.7.0
 pickleshare==0.7.5
